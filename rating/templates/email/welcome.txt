@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to the Rating app. You will find many intresting web application and you can rate them. Enjoy your stay
