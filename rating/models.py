@@ -36,7 +36,7 @@ class Profile(models.Model):
     @classmethod
     def filter_by_id(cls, id):
         profile = Profile.objects.filter(user = id).first()
-        return profile       
+        return profile    
 
 class Project(models.Model):
     title = models.CharField(max_length=250, blank=True)
