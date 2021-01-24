@@ -7,6 +7,8 @@ from . import views
 urlpatterns=[
     path('',views.home,name = 'home'),
     path('signup/',views.signup , name='signup'),
+    url(r'^api/profiles/$', views.ProfileList.as_view()),
+    url(r'^api/projects/$', views.ProjectList.as_view())
 ]
 
 if settings.DEBUG:
