@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phone_field',
     'crispy_forms',
     'rating',
     'bootstrap4',
     'rest_framework',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
