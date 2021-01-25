@@ -10,7 +10,7 @@ A project can be rated based on 3 different criteria
 - Content
 These criteria can be reviewed on a scale of 1-10 and the average score is taken.
 ---
-![]()
+![](https://www.researchgate.net/profile/Stuart_McLennan/publication/320969760/figure/fig2/AS:883565554331648@1587669852473/Proportion-of-respondents-who-had-used-rating-websites.ppm)
 ## Author
 Mugisha Thierry
 ---
