@@ -1,0 +1,60 @@
+<style>
+    .abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.nav-link{
+    color: black;
+}
+</style>
+<nav class="navbar navbar-light navbar-expand-md bg-light justify-content-between fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0">
+            <ul class="navbar-nav">
+                <form class="form-inline my-2 my-lg-0" action="/search" role="search"">
+                    <input class="form-control mr-sm-2 bg-light text-dark" type="search" name="searchproject" placeholder="Search by Project Title" aria-label="Search" style="border: 0px; border-bottom: 2px solid black; outline: none;">
+                    <button class="btn my-2 my-sm-0 btn-outline-dark" type="submit" style="border-radius: 20px"><i class="fas fa-search"></i></button>
+                  </form>
+            </ul>
+        </div>
+        <a href="/" class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25" style="font-family: 'Great Vibes', cursive; padding-top: 0%; padding-bottom: 0%; font-size: 25px; font-weight: bold; color: red;">Rating App</a>
+        <div class="navbar-collapse collapse dual-nav w-50 order-2">
+            <ul class="nav navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item active"><a class="nav-link" href="{% url 'profile' user.username  %}"><img src="{{user.profile.profile_pic.url}}" class="rounded-circle border mx-auto" alt="{{user.username}}"width="25" height="25" style="padding: 0px;"></a></li>
+                <div class="dropdown">
+                    <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 4%;font-weight: bold;font-family: 'Times New Roman', Times, serif;color: rgb(105, 102, 102);">
+                        API
+                    </a>
+        
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'profile' %}" style="color: black">Profiles</a>
+                        <a class="dropdown-item" href="{% url 'project' %}" style="color: black">Projects</a>
+                    </div>
+                </div>
+                <li class="nav-item active"><a class="nav-link" href="/logout">Logout&nbsp;<i class="fas fa-sign-in-alt"></i></a></li>
+
+                {% else %}
+                <div class="dropdown">
+                    <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 4%;font-weight: bold;font-family: 'Times New Roman', Times, serif;color: rgb(105, 102, 102);">
+                        API
+                    </a>
+        
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'profile' %}" style="color: black">Profile</a>
+                        <a class="dropdown-item" href="{% url 'project' %}" style="color: black">Projects</a>
+                    </div>
+                </div>
+                <li class="nav-item active"><a class="nav-link" href="/login">Login&nbsp;<i class="fas fa-sign-in-alt"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="/signup">SignUp&nbsp;<i class="fas fa-user-plus"></i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
