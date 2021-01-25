@@ -1,13 +1,15 @@
 from django.db import models
+from phone_field import PhoneField
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from phone_field import PhoneField
+import numpy as np
+
 
 # Create your models here.
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User,null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=128)
     second_name = models.CharField(max_length=128)
     phone = PhoneField(blank=True, help_text='Contact phone number')
@@ -49,6 +51,16 @@ class Project(models.Model):
     class Meta:
         ordering = ["-pk"]
 
+    def avg_design(self):
+        design_rates = list(map(lambda x: x.design, self.project.all()))
+        return np.mean(design_rates)
+    def avg_content(self):
+        content_rates = list(map(lambda x: x.content, self.project.all()))
+        return np.mean(content_rates)
+    def avg_usability(self):
+        usability_rates = list(map(lambda x: x.usability, self.project.all()))
+        return np.mean(usability_rates)    
+
     def save_project(self):
         self.save()
 
@@ -58,6 +70,12 @@ class Project(models.Model):
 
     def delete_project(self):
         self.delete()
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        certain_user = cls.objects.filter(title__icontains = search_term)
+        return certain_user
+  
 
     def __str__(self):
         return self.title
